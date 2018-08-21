@@ -25,10 +25,10 @@ class ComandosController extends DispositivosController
         $_senha   = $_dados['senha'];
         if($_ip !== '' && $_usuario !== ''){
             if(!$_ssh = @ssh2_connect($_ip)){
-                 echo "Error ao tentar se conectar com o dispositvo de {$_ip}";
+                 throw  new Exception("Error ao tentar se conectar com o dispositvo de {$_ip}");
             }
             if(!ssh2_auth_password($_ssh,$_usuario,$_senha)){
-                echo   "Falha de Autenticação";
+                 throw new Exception( "Falha de Autenticação");
             }
             $_stream =  ssh2_exec($_ssh,$_dados['comandos']);
             if($_stream === false){

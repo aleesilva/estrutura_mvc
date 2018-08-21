@@ -19,7 +19,7 @@ class Model  {
             try{
                 $this->_db = new PDO($_dns, $_user, $_password);
             }catch (PDOException $_exception) {
-                var_export("Error:" . $_exception->getMessage());
+                throw new Exception("Error:" . $_exception->getMessage());
             }
         return $this->_db;
     }

@@ -22,7 +22,7 @@ class Dispositivos extends Model{
                 return $_ret;
             }
         }catch (PDOException $_pdo_exception) {
-            echo 'Erro ao executar query =>' . $_pdo_exception->getMessage();
+            throw new Exception('Erro ao executar query =>' . $_pdo_exception->getMessage());
         }
     }
 
@@ -42,7 +42,7 @@ class Dispositivos extends Model{
                 return $_ret;
             }
         }catch (PDOException $_pdo_exception) {
-            echo 'Erro ao executar query =>' . $_pdo_exception->getMessage();
+            throw new Exception('Erro ao executar query =>' . $_pdo_exception->getMessage());
         }
 
     }
@@ -63,7 +63,7 @@ class Dispositivos extends Model{
                             $this->_sql->execute(array(':hostname' => $_dados['hostname'],':ip' => $_dados['ip'],
                                 ':tipo' => $_dados['tipo'], ':fabricante' => $_dados['fabricante'],':id' => $_dados['id']));
                         }catch (PDOException $_pdo_exception){
-                            echo "erro ao executar query => ". $_pdo_exception->getMessage();
+                            throw new Exception("erro ao executar query => ". $_pdo_exception->getMessage());
                         }
                     }
                 }else{
@@ -74,7 +74,7 @@ class Dispositivos extends Model{
                         ':tipo' => $_dados['tipo'], ':fabricante' => $_dados['fabricante']));
                 }
             }catch (PDOException $_pdo_exception) {
-                echo 'Erro ao executar query =>' . $_pdo_exception->getMessage();
+                throw new Exception('Erro ao executar query =>' . $_pdo_exception->getMessage());
             }
 
     }
@@ -86,7 +86,7 @@ class Dispositivos extends Model{
             $this->_sql = $this->_db->prepare($this->_sql);
             $this->_sql->execute(array(':id'=>$_id));
         }catch (PDOException $_pdo_exception){
-            echo 'Erro ao Executar query =>'.$_pdo_exception->getMessage();
+            throw new Exception('Erro ao Executar query =>'.$_pdo_exception->getMessage());
         }
     }
 }

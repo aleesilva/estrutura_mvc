@@ -54,7 +54,7 @@ class DispositivosController extends Controller
     public function apagarDespositivo($_id){
         $_dados = array();
         if(!isset($_id)){
-            return false;
+            throw new Exception("Erro ao tentar apagar registro o id não foi preenchido");
         }
         $_dispositivo = new Dispositivos();
         if($_ret = $_dispositivo->delete($_id) !== false){
@@ -65,7 +65,6 @@ class DispositivosController extends Controller
             $_dados['dispositivos'] = $_dispositivo->Select();
             $_dados['message_error'] = 'Erro Ao Tentar Deletar Dispositivo';
             $this->view_load('index',$_dados);
-            return false;
         }
     }
 }
