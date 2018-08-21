@@ -131,7 +131,11 @@ class Controller
         $_iv             = substr(hash('sha512', $_secret_iv ),0, 16);
         $_ret = base64_encode(openssl_encrypt( $_hash, $_encrypt_method, $_key, 0, $_iv ) );
 
-        if($_ret !== null)
+        if($_ret !== null){
             return $_ret;
+        }else{
+            throw new Exception("Não Foi possivel criptografar os dados");
+        }
+
     }
 }

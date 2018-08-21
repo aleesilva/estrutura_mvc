@@ -19,8 +19,11 @@ class Model  {
             try{
                 $this->_db = new PDO($_dns, $_user, $_password);
             }catch (PDOException $_exception) {
+
                 throw new Exception("Error:" . $_exception->getMessage());
+
             }
+
         return $this->_db;
     }
 

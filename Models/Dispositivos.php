@@ -78,7 +78,6 @@ class Dispositivos extends Model{
             }
 
     }
-
     public function delete($_id){
         $this->_table_name =  $this->GetPrefixTable().__CLASS__;
         try{
